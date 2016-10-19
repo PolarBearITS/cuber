@@ -1,29 +1,14 @@
-cube = [
-    [
-        ['w', 'g', 'o'],
-        ['w', 'g'],
-        ['w', 'o', 'b']
-    ],
-    [
-        ['w', 'g'],
-        ['w'],
-        ['w', 'b']
-    ],
-    [
-        ['w', 'r', 'g'],
-        ['w', 'r'],
-        ['w', 'b', 'r']
-    ]
-]
+size = 3
+cube = [[[i + size*j + (size**2)*k + 1 for i in range(size)] for j in range(size)] for k in range(size)]
 def display(c):
-    for i in range(3):
+    for i in range(size):
         print(c[i])
 def rotate(c, d):
-    if d == 0:
-        c = [[c[j][2-i] for j in range(3)] for i in range(3)]
-    elif d == 1:
-        c = [[c[2-j][i] for j in range(3)] for i in range(3)]
+    if d == 'c':
+        c = [[c[j][size - 1 - i] for j in range(size)] for i in range(size)]
+    elif d == 'cc':
+        c = [[c[size - 1 - j][i] for j in range(size)] for i in range(size)]
     display(c)
 display(cube)
 print()
-rotate(cube, 0)
+rotate(cube, 'c')
